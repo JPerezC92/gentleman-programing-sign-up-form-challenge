@@ -1,0 +1,1 @@
+export { RegisterHero } from './RegisterHero';
