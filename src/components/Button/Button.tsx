@@ -41,12 +41,12 @@ export const Button = styled('button').attrs(props => ({
 			lineHeight: 1.7,
 			paddingBlock: '0.8rem',
 			paddingInline: '2.2rem',
-			transition: 'all 0.5s ease-in-out',
+			transition: 'font-size 0.2s ease-in-out, filter 0.2s ease-in-out',
 			fontWeight,
 			textTransform,
-			outlineStyle: 'auto ridge',
-			outlineColor: colors.accent700,
 
+			'&:focus': { outline: `2px auto ${colors.accent300}` },
+			'&:hover': { cursor: 'pointer', filter: 'saturate(1.3)' },
 			[media.up('desktop')]: { fontSize: fontSize.lg },
 		};
 	},

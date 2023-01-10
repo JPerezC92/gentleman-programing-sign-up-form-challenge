@@ -5,19 +5,15 @@ import { fontSize } from '@/Theme/fonstSize';
 import { font } from '@/Theme/font';
 import { radii } from '@/Theme/radii';
 
-type InputPropsBase = {
-	colorScheme?: ColorScheme;
-	hasError?: boolean;
-};
+type InputPropsBase = { colorScheme?: ColorScheme; 'data-error'?: boolean };
 
 export const Input = styled('input').attrs(props => ({
 	type: props.type || 'text',
-}))<InputPropsBase>(({ colorScheme = 'neutral2', hasError }) => {
-	const _borderColor: Colors = hasError ? 'primary1500' : colorScheme + '100';
-	const _color: Colors = hasError ? 'primary1500' : 'neutral1';
+}))<InputPropsBase>(({ colorScheme = 'neutral2' }) => {
+	const _borderColor: Colors = colorScheme + '100';
 
 	return {
-		color: colors[_color],
+		color: colors.neutral1,
 		padding: '1.2rem',
 		border: `1px solid ${colors[_borderColor]}`,
 		borderWidth: '0.125rem',
@@ -25,7 +21,12 @@ export const Input = styled('input').attrs(props => ({
 		fontSize: fontSize.xs,
 		fontWeight: '600',
 		fontFamily: font.poppins,
-		outlineColor: colors.accent700,
+
+		'&:focus': { outline: `2px auto ${colors.accent300}` },
+		'&[data-error=true]': {
+			borderColor: colors.primary1500,
+			color: colors.primary1500,
+		},
 	};
 });
 

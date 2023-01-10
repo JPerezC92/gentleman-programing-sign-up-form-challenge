@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { z } from 'zod';
 
 import { Button } from '@/Components/Button';
 import { FormControl } from '@/Components/FormControl';
@@ -13,13 +13,15 @@ import { colors } from '@/Theme/colors';
 import { radii } from '@/Theme/radii';
 import { shadow } from '@/Theme/shadow';
 
+import { FormValues, registerSchema } from './registerSchema';
+
 const RegisterFormSyled = styled('div')({
 	flexDirection: 'column',
 	gap: '1.5rem',
 	display: 'flex',
 	'& > form': {
 		background: 'white',
-		borderRadius: radii.xl,
+		borderRadius: radii.lg,
 		boxShadow: shadow.shadow2(colors.neutral1900Alpha15),
 		display: 'flex',
 		flexDirection: 'column',
@@ -29,7 +31,11 @@ const RegisterFormSyled = styled('div')({
 	[`& > form > footer`]: {
 		textAlign: 'center',
 		marginInline: '1rem',
-		'& > b': { color: colors.primary1 },
+		'& > a': {
+			color: colors.primary1,
+			textDecoration: 'none',
+			fontWeight: 700,
+		},
 	},
 	[`& > ${Button}`]: { minHeight: '5.6rem' },
 	[media.up('mobile')]: {
@@ -38,21 +44,15 @@ const RegisterFormSyled = styled('div')({
 	},
 });
 
-const schema = z.object({
-	firstName: z.string().min(2, { message: 'First Name cannot be empty' }),
-	lastName: z.string().min(2, { message: 'Last Name cannot be empty' }),
-	email: z.string().email({ message: 'Looks like this is not an email' }),
-	password: z.string().min(8, { message: 'Password cannot be empty' }),
-});
-
-type FormValues = z.infer<typeof schema>;
-
 export const RegisterForm: React.FC = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormValues>({ resolver: zodResolver(schema), mode: 'onChange' });
+	} = useForm<FormValues>({
+		resolver: zodResolver(registerSchema),
+		mode: 'onBlur',
+	});
 
 	return (
 		<RegisterFormSyled>
@@ -73,7 +73,11 @@ export const RegisterForm: React.FC = () => {
 			>
 				<FormControl
 					{...register('firstName')}
+					autoFocus
 					placeholder='First Name'
+					minLength={1}
+					maxLength={50}
+					isError={!!errors.firstName?.message}
 					errorComponent={
 						<FormErrorMessage>{errors.firstName?.message}</FormErrorMessage>
 					}
@@ -82,6 +86,9 @@ export const RegisterForm: React.FC = () => {
 				<FormControl
 					{...register('lastName')}
 					placeholder='Last Name'
+					minLength={1}
+					maxLength={50}
+					isError={!!errors.lastName?.message}
 					errorComponent={
 						<FormErrorMessage>{errors.lastName?.message}</FormErrorMessage>
 					}
@@ -90,6 +97,8 @@ export const RegisterForm: React.FC = () => {
 				<FormControl
 					{...register('email')}
 					placeholder='Email Address'
+					maxLength={50}
+					isError={!!errors.email?.message}
 					errorComponent={
 						<FormErrorMessage>{errors.email?.message}</FormErrorMessage>
 					}
@@ -98,6 +107,10 @@ export const RegisterForm: React.FC = () => {
 				<FormControl
 					{...register('password')}
 					placeholder='Password'
+					isError={!!errors.password?.message}
+					minLength={8}
+					maxLength={50}
+					type='password'
 					errorComponent={
 						<FormErrorMessage>{errors.password?.message}</FormErrorMessage>
 					}
@@ -115,7 +128,7 @@ export const RegisterForm: React.FC = () => {
 					size='xxs'
 				>
 					By clicking the button, you are agreeing to our{' '}
-					<b>Terms and Services</b>
+					<Link href='/'>Terms and Services</Link>
 				</Text>
 			</form>
 		</RegisterFormSyled>

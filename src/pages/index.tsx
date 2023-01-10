@@ -11,7 +11,7 @@ const MainStyled = styled('main')({
 	alignItems: 'center',
 	columnGap: '1.5rem',
 	display: 'grid',
-	gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem),1fr))',
+	gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem),1fr))',
 	marginInline: 'auto',
 	maxWidth: deviceSize.desktop,
 	minHeight: '100%',

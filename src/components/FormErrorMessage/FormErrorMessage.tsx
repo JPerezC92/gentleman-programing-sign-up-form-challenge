@@ -17,7 +17,7 @@ export const FormErrorMessage = styled('p')<FormErrorMessageProps>(
 		textAlign: 'right',
 		color: colors.primary1500,
 		fontWeight: 500,
-		transition: 'all 0.3s ease-in-out',
+		transition: 'all 0.2s ease-in-out',
 		transform: children ? 'scaleX(1)' : 'scaleX(0)',
 	}),
 );

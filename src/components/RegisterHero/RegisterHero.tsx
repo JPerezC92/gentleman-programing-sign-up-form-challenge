@@ -8,9 +8,10 @@ import { fontSize } from '@/Theme/fonstSize';
 const RegisterHeroStyled = styled('div')({
 	color: 'white',
 	textAlign: 'left',
-	[media.down('mobile')]: { textAlign: 'center' },
 	[`& > h1`]: { fontSize: fontSize.xl3, letterSpacing: '-0.015rem' },
 	[`& > h1 + ${Text}`]: { marginBlockStart: '1.5rem' },
+	[media.down('mobile')]: { textAlign: 'center' },
+	[media.up('mobile')]: { [`& > h1`]: { fontSize: fontSize.xl5 } },
 });
 
 export const RegisterHero: React.FC = () => {
