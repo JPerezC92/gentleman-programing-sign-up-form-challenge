@@ -20,7 +20,7 @@ const RegisterFormSyled = styled('div')({
 	gap: '1.5rem',
 	display: 'flex',
 	'& > form': {
-		background: 'white',
+		background: colors.formBackground,
 		borderRadius: radii.lg,
 		boxShadow: shadow.shadow2(colors.neutral1900Alpha15),
 		display: 'flex',
@@ -70,6 +70,7 @@ export const RegisterForm: React.FC = () => {
 				onSubmit={handleSubmit(values =>
 					alert(JSON.stringify(values, null, 2)),
 				)}
+				autoComplete='off'
 			>
 				<FormControl
 					{...register('firstName')}
@@ -124,7 +125,7 @@ export const RegisterForm: React.FC = () => {
 					as='footer'
 					weight={500}
 					lineHeight={1.6}
-					color='neutral2'
+					color='text200'
 					size='xxs'
 				>
 					By clicking the button, you are agreeing to our{' '}

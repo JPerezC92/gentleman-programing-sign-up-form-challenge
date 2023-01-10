@@ -12,12 +12,11 @@ const IconError = styled('div').attrs(() => ({ children: '!' }))({
 	borderRadius: radii.full,
 	height: '1.5rem',
 	textAlign: 'center',
-
 	backgroundColor: colors.primary1,
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	color: 'white',
+	color: colors.text,
 	fontWeight: 500,
 	position: 'absolute',
 	right: '0',

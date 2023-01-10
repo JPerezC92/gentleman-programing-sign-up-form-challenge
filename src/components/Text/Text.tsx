@@ -16,7 +16,7 @@ export const Text = styled('p')<TextProps>(
 	({
 		size = 'sm',
 		weight = 400,
-		color = 'white',
+		color = 'text',
 		lineHeight = 1.72,
 		letterSpacing = 0.0,
 	}) => ({

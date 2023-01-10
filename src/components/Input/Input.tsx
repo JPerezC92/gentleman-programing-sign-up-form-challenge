@@ -9,11 +9,12 @@ type InputPropsBase = { colorScheme?: ColorScheme; 'data-error'?: boolean };
 
 export const Input = styled('input').attrs(props => ({
 	type: props.type || 'text',
+	autoComplete: props.autoComplete || 'off',
 }))<InputPropsBase>(({ colorScheme = 'neutral2' }) => {
 	const _borderColor: Colors = colorScheme + '100';
 
 	return {
-		color: colors.neutral1,
+		color: colors.text900,
 		padding: '1.2rem',
 		border: `1px solid ${colors[_borderColor]}`,
 		borderWidth: '0.125rem',
@@ -24,8 +25,8 @@ export const Input = styled('input').attrs(props => ({
 
 		'&:focus': { outline: `2px auto ${colors.accent300}` },
 		'&[data-error=true]': {
-			borderColor: colors.primary1500,
-			color: colors.primary1500,
+			borderColor: colors.danger500,
+			color: colors.danger500,
 		},
 	};
 });

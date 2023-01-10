@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { RegisterForm } from '@/Components/RegisterForm';
 import { RegisterHero } from '@/Components/RegisterHero';
 import { SEO } from '@/Components/SEO';
+import { Theme } from '@/Components/Theme';
 import { media } from '@/Theme/breakpoints';
 import { colors } from '@/Theme/colors';
 import { deviceSize } from '@/Theme/deviceSize';
@@ -25,9 +26,9 @@ const MainStyled = styled('main')({
 const Wrapper = styled('div')({
 	display: 'grid',
 	minHeight: '100vh',
-	background: `${colors.primary1} url("./images/bg-intro-mobile.png")`,
+	background: `${colors.background} url("./images/bg-intro-mobile.png")`,
 	[media.up('mobile')]: {
-		background: `${colors.primary1} url("./images/bg-intro-desktop.png")`,
+		background: `${colors.background} url("./images/bg-intro-desktop.png")`,
 	},
 });
 
@@ -39,13 +40,15 @@ export default function Home() {
 				description='This is a challenge from the Gentleman Programming community'
 			/>
 
-			<Wrapper>
-				<MainStyled>
-					<RegisterHero />
+			<Theme>
+				<Wrapper>
+					<MainStyled>
+						<RegisterHero />
 
-					<RegisterForm />
-				</MainStyled>
-			</Wrapper>
+						<RegisterForm />
+					</MainStyled>
+				</Wrapper>
+			</Theme>
 		</>
 	);
 }
