@@ -14,7 +14,7 @@ export function mediaHelper<
 			size2: SizeB,
 		) => {
 			return `@media (min-width: ${(p[size1] || 0) + 1}px) and (max-width: ${
-				(p[size2] || 0) - 1
+				p[size2] || 0
 			}px)` as const;
 		},
 	};

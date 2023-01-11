@@ -5,8 +5,10 @@ import { Text } from '@/Components/Text';
 import { media } from '@/Theme/breakpoints';
 import { colors } from '@/Theme/colors';
 import { fontSize } from '@/Theme/fonstSize';
+import { font } from '@/Theme/font';
 
 const RegisterHeroStyled = styled('div')({
+	fontFamily: font.poppins,
 	color: colors.text,
 	textAlign: 'left',
 	[`& > h1`]: { fontSize: fontSize.xl3, letterSpacing: '-0.015rem' },

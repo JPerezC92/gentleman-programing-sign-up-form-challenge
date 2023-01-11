@@ -15,7 +15,7 @@ export const FormErrorMessage = styled('p')<FormErrorMessageProps>(
 		fontSize: fontSize.xxs,
 		fontStyle: 'italic',
 		textAlign: 'right',
-		color: colors.primary1500,
+		color: colors.danger300,
 		fontWeight: 500,
 		transition: 'all 0.2s ease-in-out',
 		transform: children ? 'scaleX(1)' : 'scaleX(0)',

@@ -25,7 +25,7 @@ export const Input = styled('input').attrs(props => ({
 
 		'&:focus': { outline: `2px auto ${colors.accent300}` },
 		'&[data-error=true]': {
-			borderColor: colors.danger500,
+			borderColor: colors.danger300,
 			color: colors.danger500,
 		},
 	};

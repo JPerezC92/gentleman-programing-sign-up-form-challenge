@@ -12,14 +12,17 @@ const MainStyled = styled('main')({
 	alignItems: 'center',
 	columnGap: '1.5rem',
 	display: 'grid',
-	gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem),1fr))',
 	marginInline: 'auto',
 	maxWidth: deviceSize.desktop,
 	minHeight: '100%',
 	paddingBlock: '4.55rem',
 	paddingInline: '1.5rem',
 	rowGap: '2.8rem',
-	[media.between('mobile', 'desktop')]: { paddingInline: '5%' },
+	[media.between('mobile', 'tablet')]: { paddingInline: '5%' },
+	[media.up('tablet')]: {
+		gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%,18rem),1fr))',
+		paddingInline: '8%',
+	},
 	[media.up('desktop')]: { paddingInline: '10.25rem' },
 });
 
